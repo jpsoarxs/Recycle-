@@ -6,10 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/users', (req, res) => {
-  res.json({ status:true });
-  res.status(200);
-});
+require('./controllers/authController')(app);
 
 app.listen(3333);
 console.log("Servidor iniciado com sucesso!");
