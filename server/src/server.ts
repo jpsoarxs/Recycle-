@@ -1,12 +1,17 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+import express from 'express'
+import routes from './routes'
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }))
+// GET: Buscar uma ou mais informações do back-end
+// POST: Criar uma nova informação no back-end
+// PUT: Atualizar uma informação no back-end
+// DELETE: Remover uma informação no back-end
 
-require('./controllers/authController')(app);
+// Request Param: Parâmetro que vem na própia rota que identificam um recurso
+// Query Param: Parâmetros que vem na própia rota, geralmente opicionais
+
+app.use(express.json())
+app.use(routes);
 
 app.listen(3333);
-console.log("Servidor iniciado com sucesso!");
